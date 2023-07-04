@@ -6,6 +6,8 @@ import "./index.css";
 import { Layout } from "@/components/Layout";
 import { DashboardPage, CustomersPage, ProductsPage, OrdersPage } from "@/pages";
 import { AddCustomerPage } from "./pages/AddCustomerPage";
+import { AddProductPage } from "./pages/AddProductPage";
+import { AddOrderPage } from "./pages/AddOrderPage";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "add-customer",
         element: <AddCustomerPage />,
+      },
+      {
+        path: "add-product",
+        element: <AddProductPage />,
+      },
+      {
+        path: "add-order",
+        element: <AddOrderPage />,
       },
     ],
   },

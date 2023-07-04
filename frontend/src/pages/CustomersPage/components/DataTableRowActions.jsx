@@ -12,6 +12,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/DropdownMenu";
 
+export const delete_element = (e, id) => {
+  fetch("http://127.0.0.1:8000/products/{id}", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error));
+    window.location.reload(false);
+};
+
 export function DataTableRowActions({ row }) {
   return (
     <DropdownMenu>
@@ -25,12 +39,13 @@ export function DataTableRowActions({ row }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem>
+        <DropdownMenuItem >
           <Pen className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
           Edit
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        {/* tu z jakiegoś powodu nie chce id znaleźć */}
+        <DropdownMenuItem onClick={() => {console.log(row.getValue("id"))}}>
           <Trash className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
           Delete
           <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
